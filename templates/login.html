@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>login</title>
+</head>
+<body>
+{% block content %}
+    {% if current_user.is_anonymous %}
+        <div class="container my-5">
+            <div class="row">
+                <div class="col-lg-6 col-md-8 offset-lg-3 offset-md-2">
+                    <p>Здравствуйте!</p>
+                    <p>Вы не вошли в систему,</p>
+                    <p>поэтому вам надо авторизоваться</p>
+                </div>
+            </div>
+        </div>
+        <div class="container my-5">
+            <div class="row">
+                <div class="col-lg-6 col-md-8 offset-lg-3 offset-md-2">
+                    <label style="color: crimson;">{{ message }}</label>
+                    <form action="/login" method="POST">
+                        <input id="csrf_token" name="csrf_token" type="hidden" value="ImY2ZDJjYTEyNzcxZTg3NTQ2OGIxYWFhNDA2ZGQ0MTRjZWYzMmQ0OTUi.YF3jOA.p6qMwDK2Kd5xRaiCT2FbpANbZV4">
+                        <div class="mb-3">
+                            <label  class="form_label" for="email">Почта</label>
+                            <input class="form-control" type="email" id="email" name="email">
+                        </div >
+                        <div class="mb-3">
+                            <label class="form_label" for="password">Пароль</label>
+                            <input class="form-control" type="password" id="password" name="password">
+                        </div>
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary" >
+                                Авторизоваться
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <div class="container my-5">
+            <div class="row">
+                <div class="col-lg-6 col-md-8 offset-lg-3 offset-md-2">
+                    <label>Вы успешно авторизовались. Здесь, на этой странице, больше ничего нет</label>
+                    <img src="/static/funny_cat.gif">
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+{% endblock %}
+</body>
+</html>

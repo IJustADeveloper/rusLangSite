@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ruschian language</title>
+</head>
+<body>
+    <h2>Домашние задания по русскому и литературе от Маргариты Юрьевны</h2>
+    {% block content %}
+        <table>
+            <tbody>
+            {% for r in res %}
+                <tr><td><p>-----------------------------------------------------------------------------------------</p></td></tr>
+
+                    <tr><td><h4>{{ r[1] }}</h4></td></tr>
+                    <tr><td>{{ r[2] }}</td></tr>
+                    <tr><td>дата публикации:{{ r[3] }}</td></tr>
+
+                <tr><td><p>-----------------------------------------------------------------------------------------</p></td></tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        {% if res|length > 1 and sb == true%}
+            <button> <a href={{ "%s" % (number + 1) }}>старые дз</a></button>
+        {% endif %}
+        {% if number > 1 %}
+            <button> <a href={{ "%s" % (number - 1) }}>новые дз</a></button>
+        {% endif %}
+    {% endblock %}
+
+</body>
+</html>
